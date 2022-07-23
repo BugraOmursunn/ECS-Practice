@@ -13,14 +13,14 @@ public class MoveSystem : JobComponentSystem
 	{
 		var JobHandle = Entities.WithName("MoveSystem").ForEach((ref Translation position, ref Rotation rotation) => {
 			
-			// position.Value += 0.1f * math.forward(rotation.Value); //this declare where it is facing with
-			//
-			// if (position.Value.z > 50)
-			// 	position.Value.z = -50;
+			position.Value += 0.1f * math.forward(rotation.Value); //this declare where it is facing with
 			
-			position.Value.y += 0.1f ;
-			if (position.Value.y > 10)
-				position.Value.y = 0;
+			if (position.Value.z > 50)
+				position.Value.z = -50;
+			
+			// position.Value.y += 0.1f ;
+			// if (position.Value.y > 10)
+			// 	position.Value.y = 0;
 		}).Schedule(inputDeps);
 		return JobHandle;
 	}
